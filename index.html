@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <title>Site Bootstrap</title>
@@ -12,15 +12,116 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .hero {
+            height: 100vh;
+            background: url('assets/asset04.jpg') no-repeat center center/cover;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        /* Container do card */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 320px;
+            perspective: 1000px; /* Adiciona profundidade ao efeito */
+        }
+
+        /* Parte interna do card */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        /* Gira o card ao passar o mouse */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Frente e verso do card */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+
+        /* Frente do card */
+        .flip-card-front {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Verso do card */
+        .flip-card-back {
+            background: #007bff;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .navbar {
+        z-index: 1030;
+        }   
+    </style>
 </head>
 
 <body>
   <header>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container px-5">
-            <a class="navbar-brand" href="#!">Matheus Esboinski</a>
+            <a class="navbar-brand" href="https://github.com/esboinski">Matheus Esboinski</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -31,71 +132,126 @@
             </div>
         </div>
     </nav>
-    <!-- Cabeçalho -->
-    <header class="bg-dark py-5">
-        <div class="container px-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Matheus Esboinski</h1>
-                        <p class="lead text-white-50 mb-4">Explore meus projetos e descubra como posso ajudá-lo a alcançar seus objetivos digitais.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+        <div class="container text-center hero-content">
+            <h1>Matheus Esboinski</h1>
+            <p>Estudante de Desenvolvimento de Sistemas</p>
         </div>
+    </section>
   </header>
   <main>
      <!-- Sobre mim -->
-     <section class="py-5 border-bottom nav-link" href="#sobremim" id="sobremim">
-       <div class="container">
-            <h1 class="fw-bolder text-center">Sobre mim</h1>
-            <img src="assets/asset2.jpg" class="rounded mx-auto d-block w-25">
-            <p class="ml-40 text-center">Olá, sou Matheus Esboinski, tenho 17 anos e estou atualmente cursando técnico em Desenvolvimento de Sistemas no SENAI
-       </div>
+     <section class="py-5 bg-dark" id="sobremim">
+        <div class="container text-white">
+            <div class="section-title">
+                <h1 class="fw-bolder text-left">Sobre mim</h1>
+                <p class="">Olá, meu nome é Matheus Esboinski e nasci e cresci em Joinville (SC).</p>
+            </div>
+    
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <img src="assets/asset2.jpg" class="rounded img-fluid" style="height: 300px;">
+                </div>
+    
+                <div class="col-lg-8 pt-4 pt-lg-0">
+                    <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                    <p>Engenheiro de software apaixonado, dedicado à criação de sistemas de alta qualidade e otimização de processos por meio da automação. Meu objetivo é garantir que os produtos de software atinjam os mais altos padrões de qualidade e desempenho, desde o início do projeto até a entrega final.</p>
+    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><strong>Idade:</strong> 17</li>
+                                <li><strong>Instituição:</strong> SENAI</li>
+                                <li><strong>Curso:</strong> Técnico em Desenvolvimento de Sistemas</li>
+                                <li><strong>Ano de Formação:</strong> 2025</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><strong>Data de Nascimento:</strong> 28 de Março</li>
+                                <li><strong>Nome Completo:</strong> Matheus Esboinski Siewes</li>
+                                <li><strong>Cidade:</strong> Joinville, Santa Catarina - BR</li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <p class="text-end" style="font-style: italic;">
+                        "O único modo de fazer um excelente trabalho é amar o que você faz." - Steve Jobs
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
+    
 
     <!-- Projetos -->
-    <section class="py-5 border-bottom nav-link bg-dark" id="projetos">
+    <section class="py-5 nav-link" id="projetos" style="background-color:#F5F8FD; min-height: 80vh;">
         <div class="container">
-            <h1 class="fw-bolder text-center text-white">Projetos</h1>
+            <div class="section-title">
+                <h1 class="fw-bolder text-center text-black" style="margin-bottom: 100px;">Projetos</h1>
+            </div>
             <div class="row justify-content-center">
                 <!-- Card 1 -->
                 <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">Calculadora de juros simples</h5>
-                            <a href="https://github.com/esboinski/calculadora-de-juros-simples" class="btn btn-primary">Repositório</a>
-                            <a href="https://calculadora-de-juros-simples.vercel.app/" class="btn btn-primary">Site</a>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Frente do Card -->
+                            <div class="flip-card-front">
+                                <img class="card-img-top rounded" src="assets/asset05.png" alt="Imagem de capa do card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Calculadora de juros simples</h5>
+                                </div>
+                            </div>
+                            <!-- Verso do Card -->
+                            <div class="flip-card-back d-flex flex-column align-items-center justify-content-center">
+                                <p>Calculadora de juros simples para cálculos financeiros básicos.</p>
+                                <a href="https://github.com/esboinski/calculadora-de-juros-simples" class="btn btn-primary">Repositório</a>
+                                <br>
+                                <a href="https://calculadora-de-juros-simples.vercel.app/" class="btn btn-primary">Site</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            
                 <!-- Card 2 -->
                 <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">PLACEHOLDER</h5>
-                            <a href="#" class="btn btn-primary">Visitar</a>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img class="card-img-top rounded" src="assets/asset05.png" alt="Imagem de capa do card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">E-commerce fictício</h5>
+                                </div>
+                            </div>
+                            <div class="flip-card-back d-flex flex-column align-items-center justify-content-center">
+                                <p>E-commerce fictício criado para fins educacionais.</p>
+                                <a href="https://github.com/esboinski/cm3-shop" class="btn btn-primary">Repositório</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+            
                 <!-- Card 3 -->
                 <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">PLACEHOLDER</h5>
-                            <a href="#" class="btn btn-primary">Visitar</a>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img class="card-img-top rounded" src="assets/asset05.png" alt="Imagem de capa do card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">PLACEHOLDER</h5>
+                                </div>
+                            </div>
+                            <div class="flip-card-back d-flex flex-column align-items-center justify-content-center">
+                                <p>Descrição breve do projeto Placeholder.</p>
+                                <a href="#" class="btn btn-primary">Visitar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Contatos -->
     <section class="py-5 border-bottom nav-link" href="#contato" id="contato">
         <div class="container text-center">
