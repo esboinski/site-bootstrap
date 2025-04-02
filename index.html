@@ -1,125 +1,479 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-  <title>Site Bootstrap</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Site Bootstrap</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Awesome Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .hero {
+            height: 100vh;
+            background: url('assets/asset04.jpg') no-repeat center center/cover;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .navbar {
+            z-index: 1030;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            margin-bottom: 30px;
+            height: 450px;
+            transform-style: preserve-3d;
+        }
+
+        .card-flip {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-container:hover .card-flip {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-back {
+            background: #242424;
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+
+        .card-header {
+            padding: 15px;
+            text-align: center;
+            background: black;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .img-area {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-align: left;
+            color: white;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .btn-container {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card-btn {
+            width: 100%;
+            max-width: 180px;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                height: 400px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        h1{
+            color:#F5F5F5;
+        }
+
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+
+        .feature {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 4rem;
+            width: 4rem;
+            font-size: 2rem;
+            background: black !important;
+            color: white !important;
+            border: 1px solid white;
+        }
+
+    </style>
 </head>
 
 <body>
-  <header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#!">Matheus Esboinski</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#sobremim">Sobre Mim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Cabeçalho -->
-    <header class="bg-dark py-5">
-        <div class="container px-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Matheus Esboinski</h1>
-                        <p class="lead text-white-50 mb-4">Explore meus projetos e descubra como posso ajudá-lo a alcançar seus objetivos digitais.</p>
-                    </div>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#181818;">
+            <div class="container px-5">
+                <a class="navbar-brand" href="https://github.com/esboinski">Matheus Esboinski</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="#sobremim">Sobre Mim</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-  </header>
-  <main>
-     <!-- Sobre mim -->
-     <section class="py-5 border-bottom nav-link" href="#sobremim" id="sobremim">
-       <div class="container">
-            <h1 class="fw-bolder text-center">Sobre mim</h1>
-            <img src="assets/asset2.jpg" class="rounded mx-auto d-block w-25">
-            <p class="ml-40 text-center">Olá, sou Matheus Esboinski, tenho 17 anos e estou atualmente cursando técnico em Desenvolvimento de Sistemas no SENAI
-       </div>
-    </section>
-
-    <!-- Projetos -->
-    <section class="py-5 border-bottom nav-link bg-dark" id="projetos">
-        <div class="container">
-            <h1 class="fw-bolder text-center text-white">Projetos</h1>
-            <div class="row justify-content-center">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">Calculadora de juros simples</h5>
-                            <a href="https://github.com/esboinski/calculadora-de-juros-simples" class="btn btn-primary">Repositório</a>
-                            <a href="https://calculadora-de-juros-simples.vercel.app/" class="btn btn-primary">Site</a>
-                        </div>
-                    </div>
+        </nav>
+        <!-- Hero Section -->
+        <section class="hero d-flex align-items-center">
+            <div class="container text-center hero-content">
+                <h1>Matheus Esboinski</h1>
+                <p>Estudante de Desenvolvimento de Sistemas</p>
+            </div>
+        </section>
+    </header>
+    <main>
+        <!-- Sobre mim -->
+        <section class="py-5" id="sobremim" style="background-color: #1E1E1E;">
+            <div class="container text-white">
+                <div class="section-title">
+                    <h1 class="fw-bolder text-left">Sobre mim</h1>
+                    <hr style="width: 400px;">
+                    <p class="">Olá, meu nome é Matheus Esboinski e nasci e cresci em Joinville (SC).</p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">PLACEHOLDER</h5>
-                            <a href="#" class="btn btn-primary">Visitar</a>
-                        </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <img src="assets/asset2.jpg" class="rounded img-fluid" style="height: 300px;">
                     </div>
-                </div>
 
-                <!-- Card 3 -->
-                <div class="col-md-4">
-                    <div class="card" style="width: 100%;">
-                        <img class="card-img-top" src="assets/asset1.png" alt="Imagem de capa do card">
-                        <div class="card-body">
-                            <h5 class="card-title">PLACEHOLDER</h5>
-                            <a href="#" class="btn btn-primary">Visitar</a>
+                    <div class="col-lg-8 pt-4 pt-lg-0">
+                        <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                        <p>Engenheiro de software apaixonado, dedicado à criação de sistemas de alta qualidade e
+                            otimização de processos por meio da automação. Meu objetivo é garantir que os produtos de
+                            software atinjam os mais altos padrões de qualidade e desempenho, desde o início do projeto
+                            até a entrega final.</p>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li><strong>Idade:</strong> 17</li>
+                                    <li><strong>Instituição:</strong> SENAI</li>
+                                    <li><strong>Curso:</strong> Técnico em Desenvolvimento de Sistemas</li>
+                                    <li><strong>Ano de Formação:</strong> 2025</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li><strong>Data de Nascimento:</strong> 28 de Março</li>
+                                    <li><strong>Nome Completo:</strong> Matheus Esboinski Siewes</li>
+                                    <li><strong>Cidade:</strong> Joinville, Santa Catarina - BR</li>
+                                </ul>
+                            </div>
                         </div>
+
+                        <p class="text-end" style="font-style: italic;">
+                            "O único modo de fazer um excelente trabalho é amar o que você faz." - Steve Jobs
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contatos -->
-    <section class="py-5 border-bottom nav-link" href="#contato" id="contato">
-        <div class="container text-center">
-             <h1 class="fw-bolder text-center">Contato</h1>
-             <a href="https://github.com/esboinski" target="_blank">
-                <i class="fab fa-github fa-2x"></i>
-            </a>
-        </div>
-     </section>
-  </main>
-  <footer>
-    <!-- Rodapé -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 Matheus Esboinski. Todos os direitos reservados.</p>
-      </footer>
-  </footer>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-  </script>
+        <!-- Projetos -->
+        <section class="py-5 nav-link" id="projetos" style="background-color:#F5F8FD; min-height: 80vh;">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h1 class="fw-bolder text-black mb-5">Projetos</h1>
+                </div>
+                <div class="row justify-content-center">
+
+                    <!-- Projeto 1 - Versão Final -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card-container">
+                            <div class="card-flip">
+                                <div class="card-front">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Calculadora de Juros</h3>
+                                    </div>
+                                    <div class="img-area">
+                                        <img src="assets/asset06.jpg" alt="Calculadora de Juros" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="card-content">
+                                        <h3 class="card-title">Calculadora de Juros</h3>
+                                        <p class="card-description">Uma calculadora intuitiva e eficiente para realizar
+                                            cálculos de juros simples de forma rápida e precisa. Ideal para estudantes,
+                                            investidores e qualquer pessoa que precise calcular rendimentos ou valores
+                                            futuros com base em um capital inicial, como investimentos, empréstimos ou
+                                            até mesmo antecipação de cheques. Basta inserir o valor inicial, a taxa de
+                                            juros e o período para obter o resultado de forma instantânea.</p>
+
+                                        <div class="badge-container">
+                                            <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                                                alt="HTML">
+                                            <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white"
+                                                alt="CSS">
+                                            <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                                                alt="JavaScript">
+                                            <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
+                                                alt="Python">
+                                        </div>
+
+                                        <div class="btn-container">
+                                            <a href="https://github.com/esboinski/calculadora-de-juros-simples"
+                                                class="btn btn-dark card-btn">
+                                                <i class="bi bi-github me-1"></i> Repositório
+                                            </a>
+                                            <a href="https://calculadora-de-juros-simples.vercel.app/"
+                                                class="btn btn-primary card-btn">
+                                                <i class="bi bi-box-arrow-up-right me-1"></i> Site
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 - Versão Final -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card-container">
+                            <div class="card-flip">
+                                <div class="card-front">
+                                    <div class="card-header">
+                                        <h3 class="card-title">E-commerce</h3>
+                                    </div>
+                                    <div class="img-area">
+                                        <img src="assets/asset07.jpg" alt="E-commerce" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="card-content">
+                                        <h3 class="card-title">E-commerce</h3>
+                                        <p class="card-description">Um e-commerce fictício desenvolvido para fins
+                                            educacionais, simulando uma loja online completa. O projeto inclui
+                                            funcionalidades como cadastro de produtos, carrinho de compras, sistema de
+                                            login e integração com banco de dados. Criado com tecnologias modernas como
+                                            PHP, MySQL, Bootstrap e JavaScript, esse projeto é ideal para quem deseja
+                                            aprender sobre o desenvolvimento de plataformas de comércio eletrônico e a
+                                            estruturação de um backend funcional.
+                                        </p>
+
+                                        <div class="badge-container">
+                                            <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"
+                                                alt="PHP">
+                                            <img src="https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white"
+                                                alt="MySQL">
+                                            <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"
+                                                alt="Bootstrap">
+                                            <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                                                alt="HTML">
+                                            <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white"
+                                                alt="CSS">
+                                            <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                                                alt="JavaScript">
+                                        </div>
+
+                                        <div class="btn-container">
+                                            <a href="https://github.com/esboinski/cm3-shop"
+                                                class="btn btn-dark card-btn">
+                                                <i class="bi bi-github me-1"></i> Repositório
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto Placeholder - Versão Final -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card-container">
+                            <div class="card-flip">
+                                <div class="card-front">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Projeto Futuro</h3>
+                                    </div>
+                                    <div class="img-area">
+                                        <img src="assets/placeholder.jpg" alt="Projeto Futuro" class="card-img">
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="card-content">
+                                        <h3 class="card-title">Em Desenvolvimento</h3>
+                                        <p class="card-description">Novo projeto em desenvolvimento.</p>
+
+                                        <div class="badge-container">
+                                            <img src="https://img.shields.io/badge/Em%20Breve-555?style=for-the-badge"
+                                                alt="Em Breve">
+                                        </div>
+
+                                        <div class="btn-container">
+                                            <button class="btn btn-secondary card-btn disabled">
+                                                <i class="bi bi-hourglass-split"></i> Em Breve
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contatos -->
+        <section class="py-5 nav-link" href="#contato" id="contato">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3 text-"><i class="bi bi-envelope"></i></div>
+                        </div>
+                        <h2 class="text-center mb-4">Entre em Contato</h2>
+
+                        <!-- Mensagem de sucesso -->
+                        <div id="success-message" class="alert alert-success d-none">
+                            Mensagem enviada com sucesso! 🎉
+                        </div>
+
+                        <!-- Mensagem de erro -->
+                        <div id="error-message" class="alert alert-danger d-none">
+                            Ocorreu um erro. Tente novamente! ❌
+                        </div>
+
+                        <!-- Formulário -->
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Digite sua mensagem"
+                                    required></textarea>
+                            </div>
+
+                            <!-- Botão de envio -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- Rodapé -->
+        <footer class=" text-white text-center py-3" style="background-color:#181818;  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);">
+            <p>&copy; 2025 Matheus Esboinski. Todos os direitos reservados.<br>
+            </p>
+        </footer>
+    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
